@@ -1,0 +1,18 @@
+<aura:component >
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+	<aura:attribute name="_raw" type="String" access="private"/>
+    <aura:attribute name="_errorMessage" type="String" access="private"/>
+    
+    <aura:attribute name="resourceName" type="String" default="employee2"/>
+    <aura:attribute name="class" type="String"/>
+
+    <div class="{!v.class}">
+        <aura:if isTrue="{!not(empty(v._errorMessage))}">
+            <ui:message title="Error" severity="error">{!v._errorMessage}</ui:message>
+            <aura:set attribute="else">
+                <aura:unescapedHtml value="{!v._raw}"/>
+            </aura:set>
+        </aura:if>        
+   	</div>
+</aura:component>
